@@ -10,16 +10,17 @@ module Myapp
   class Application < Rails::Application
     config.load_defaults 6.1
 
-    # Rspec
     config.generators do |g|
-      # テストDBにレコードを作成するファイルを作成をしない
-      fixtures: false,
-      # ビュースペック作成しない
-      view_specs: false,
-      # ヘルパーファイル用のスペックを作成しない
-      helper_specs: false,
-      # ルーティング用のスペックを作成しない
-      routing_specs: false
+      # Rspec
+      g.test_framework :rspec,
+        # テストDBにレコードを作成するファイルを作成をしない
+        fixtures: false,
+        # ビュースペック作成しない
+        view_specs: false,
+        # ヘルパーファイル用のスペックを作成しない
+        helper_specs: false,
+        # ルーティング用のスペックを作成しない
+        routing_specs: false
     end
 
   end
