@@ -7,6 +7,7 @@ $ docker-compose build
 $ docker-compose up -d
 
 終了
+
 $ docker-compose down
 
 ローカル
@@ -14,4 +15,5 @@ $ docker-compose down
 http://0.0.0.0:3000/
 
 heroku
+
 https://rails-app-a.herokuapp.com/

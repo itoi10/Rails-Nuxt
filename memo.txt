@@ -3,3 +3,13 @@ https://qiita.com/nsy_13/items/9fbc929f173984c30b5d
 
 コンテナに入る
 $ docker-compose exec web bash
+
+# heroku 直近のイベント確認
+$ heroku logs
+
+# コントローラ生成
+$ rails g controller クラス名 メソッド名
+ - controllersに クラス,メソッド,
+ - viewsにerb
+ - routes.rbにルーティングが追加される
+
