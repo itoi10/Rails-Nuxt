@@ -13,3 +13,5 @@ $ rails g controller クラス名 メソッド名
  - viewsにerb
  - routes.rbにルーティングが追加される
 
+# テスト実行
+$ rails test
