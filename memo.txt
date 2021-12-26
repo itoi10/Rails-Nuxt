@@ -1,0 +1,5 @@
+# Docker Rails6.0 環境構築
+https://qiita.com/nsy_13/items/9fbc929f173984c30b5d
+
+コンテナに入る
+$ docker-compose exec web bash
