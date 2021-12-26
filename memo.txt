@@ -15,3 +15,6 @@ $ rails g controller クラス名 メソッド名
 
 # テスト実行
 $ rails test
+
+Rspec
+$ rspec
