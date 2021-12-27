@@ -10,7 +10,7 @@ RSpec.describe "StaticPages", type: :request do
     it "response 200 OK and title ok" do
       get root_url
       expect(response).to have_http_status(200)
-      assert_select "title", "Home | #{@base_title}"
+      assert_select "title", "#{@base_title}"
     end
   end
 
@@ -18,7 +18,7 @@ RSpec.describe "StaticPages", type: :request do
     it "response 200 OK and title ok" do
       get static_pages_home_path
       expect(response).to have_http_status(200)
-      assert_select "title", "Home | #{@base_title}"
+      assert_select "title", "#{@base_title}"
     end
   end
 
