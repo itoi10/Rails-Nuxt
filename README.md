@@ -1,10 +1,16 @@
 # Rails アプリ
 
-起動方法
+起動
 
 $ docker-compose build
 
 $ docker-compose up -d
+
+セットアップ
+
+$ docker-compose exec web yarn install
+
+$ docker-compose exec web rake db:create
 
 終了
 
@@ -12,7 +18,7 @@ $ docker-compose down
 
 ローカル
 
-http://0.0.0.0:3000/
+http://127.0.0.1:3000/
 
 heroku
 
