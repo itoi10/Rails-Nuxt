@@ -6,11 +6,15 @@ $ docker-compose build
 
 $ docker-compose up -d
 
-セットアップ
+セットアップ (最初の 1 回)
 
 $ docker-compose exec web yarn install
 
 $ docker-compose exec web rake db:create
+
+rails コンテナ入り方
+
+$ docker-compose exec web bash
 
 終了
 

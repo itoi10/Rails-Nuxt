@@ -2,47 +2,35 @@ require 'rails_helper'
 
 RSpec.describe "StaticPages", type: :request do
 
-  before do
-    @base_title = "Sample App"
-  end
-
-  describe "GET /" do
-    it "response 200 OK and title ok" do
-      get root_url
-      expect(response).to have_http_status(200)
-      assert_select "title", "#{@base_title}"
+  describe "Home page" do
+    it "returns http success and title ok" do
+      get root_path
+      expect(response).to have_http_status(:success)
+      assert_select "title", full_title
     end
   end
 
-  describe "GET /static_pages/home" do
-    it "response 200 OK and title ok" do
-      get static_pages_home_path
-      expect(response).to have_http_status(200)
-      assert_select "title", "#{@base_title}"
+  describe "Help page" do
+    it "returns http success and title ok" do
+      get help_path
+      expect(response).to have_http_status(:success)
+      assert_select "title", full_title("Help")
     end
   end
 
-  describe "GET /static_pages/help" do
-    it "response 200 OK and title ok" do
-      get static_pages_help_path
-      expect(response).to have_http_status(200)
-      assert_select "title", "Help | #{@base_title}"
+  describe "About page" do
+    it "returns http success and title ok" do
+      get about_path
+      expect(response).to have_http_status(:success)
+      assert_select "title", full_title("About")
     end
   end
 
-  describe "GET /static_pages/about" do
-    it "response 200 OK and title ok" do
-      get static_pages_about_path
-      expect(response).to have_http_status(200)
-      assert_select "title", "About | #{@base_title}"
-    end
-  end
-
-  describe "GET /static_pages/contact" do
-    it "response 200 OK and title ok" do
-      get static_pages_contact_path
-      expect(response).to have_http_status(200)
-      assert_select "title", "Contact | #{@base_title}"
+  describe "Contact page" do
+    it "returns http success and title ok" do
+      get contact_path
+      expect(response).to have_http_status(:success)
+      assert_select "title", full_title("Contact")
     end
   end
 end
