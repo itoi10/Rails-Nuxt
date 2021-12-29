@@ -6,7 +6,7 @@ RSpec.describe "StaticPages", type: :request do
     @base_title = "Sample App"
   end
 
-  describe "should get home" do
+  describe "Home page" do
     it "response 200 OK and title ok" do
       get root_path
       expect(response).to have_http_status(200)
@@ -14,7 +14,7 @@ RSpec.describe "StaticPages", type: :request do
     end
   end
 
-  describe "should get help" do
+  describe "Help page" do
     it "response 200 OK and title ok" do
       get help_path
       expect(response).to have_http_status(200)
@@ -22,7 +22,7 @@ RSpec.describe "StaticPages", type: :request do
     end
   end
 
-  describe "should get about" do
+  describe "About page" do
     it "response 200 OK and title ok" do
       get about_path
       expect(response).to have_http_status(200)
@@ -30,7 +30,7 @@ RSpec.describe "StaticPages", type: :request do
     end
   end
 
-  describe "should get contact" do
+  describe "Contact page" do
     it "response 200 OK and title ok" do
       get contact_path
       expect(response).to have_http_status(200)
