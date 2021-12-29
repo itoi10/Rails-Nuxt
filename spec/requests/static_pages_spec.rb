@@ -6,41 +6,33 @@ RSpec.describe "StaticPages", type: :request do
     @base_title = "Sample App"
   end
 
-  describe "GET /" do
+  describe "should get home" do
     it "response 200 OK and title ok" do
-      get root_url
+      get root_path
       expect(response).to have_http_status(200)
       assert_select "title", "#{@base_title}"
     end
   end
 
-  describe "GET /static_pages/home" do
+  describe "should get help" do
     it "response 200 OK and title ok" do
-      get static_pages_home_path
-      expect(response).to have_http_status(200)
-      assert_select "title", "#{@base_title}"
-    end
-  end
-
-  describe "GET /static_pages/help" do
-    it "response 200 OK and title ok" do
-      get static_pages_help_path
+      get help_path
       expect(response).to have_http_status(200)
       assert_select "title", "Help | #{@base_title}"
     end
   end
 
-  describe "GET /static_pages/about" do
+  describe "should get about" do
     it "response 200 OK and title ok" do
-      get static_pages_about_path
+      get about_path
       expect(response).to have_http_status(200)
       assert_select "title", "About | #{@base_title}"
     end
   end
 
-  describe "GET /static_pages/contact" do
+  describe "should get contact" do
     it "response 200 OK and title ok" do
-      get static_pages_contact_path
+      get contact_path
       expect(response).to have_http_status(200)
       assert_select "title", "Contact | #{@base_title}"
     end
