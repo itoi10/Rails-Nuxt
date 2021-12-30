@@ -1,29 +1,37 @@
 # Rails アプリ
 
-起動
+## バージョン
+
+Ruby 3.0.2
+
+Rails 7.0.0
+
+MySQL 8.0.27
+
+## セットアップ
 
 $ docker-compose build
 
+$ docker-compose run web rails db:create
+
+### 起動
+
 $ docker-compose up -d
-
-セットアップ (最初の 1 回)
-
-$ docker-compose exec web yarn install
-
-$ docker-compose exec web rake db:create
 
 rails コンテナ入り方
 
 $ docker-compose exec web bash
 
-終了
+### 終了
 
 $ docker-compose down
 
-ローカル
+## 環境
+
+### ローカル
 
 http://127.0.0.1:3000/
 
-heroku
+### heroku
 
 https://rails-app-a.herokuapp.com/

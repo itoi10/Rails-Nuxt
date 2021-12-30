@@ -1,23 +1,27 @@
 version: '3'
-
 services:
   db:
+    restart: always
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: password
+      TZ: 'Asia/Tokyo'
     ports:
       - '3306:3306'
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - mysql-data:/var/lib/mysql
+    tty: true
 
   web:
-    build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    restart: always
+    build:
+      context: .
     volumes:
       - .:/myapp
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
-      - "3000:3000"
+      - 3000:3000
     depends_on:
       - db
     stdin_open: true
