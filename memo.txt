@@ -1,0 +1,35 @@
+# Docker Rails6 環境構築
+https://qiita.com/nsy_13/items/9fbc929f173984c30b5d
+
+# Docker Rails7 環境構築
+https://nothing-behind.com/2021/12/21/docker-compose%E3%81%A7ruby3rails7-mysql%E3%81%AE%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%82%92%E8%A1%8C%E3%81%86%E6%96%B9%E6%B3%95%E3%81%BE%E3%81%A8%E3%82%81/
+
+コンテナに入る
+$ docker-compose exec web bash
+
+# heroku 直近のイベント確認
+$ heroku logs
+
+# コントローラ生成
+$ rails g controller クラス名 メソッド名
+ - controllersに クラス,メソッド,
+ - viewsにerb
+ - routes.rbにルーティングが追加される
+
+# テスト実行
+$ rails test
+
+Rspec
+インストール
+Gemfile
+  group :development, :test do
+    # RSpec
+    gem 'rspec-rails', '~> 5.0.2'
+    gem 'spring-commands-rspec'
+  end
+$ bundle install
+$ rails g rspec:install
+
+
+実行
+$ rspec
