@@ -5,12 +5,13 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: password
-      TZ: 'Asia/Tokyo'
+      TZ: Asia/Tokyo
     ports:
       - '3306:3306'
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
     tty: true
 
   web:

@@ -14,6 +14,8 @@ $ docker-compose build
 
 $ docker-compose run web rails db:create
 
+$ docker-compose run web rails db:migrate
+
 ### 起動
 
 $ docker-compose up -d
@@ -21,6 +23,10 @@ $ docker-compose up -d
 rails コンテナ入り方
 
 $ docker-compose exec web bash
+
+mysql コンテナ入り方
+
+$ docker-compose exec db bash
 
 ### 終了
 

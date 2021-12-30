@@ -32,3 +32,24 @@ $ rails g rspec:install
 
 実行
 $ rspec
+
+# herokuデプロイ
+$ git push heroku
+$ heroku run rails db:migrate
+
+# mysqlコンテナ操作
+$ docker-compose exec db bash
+// mysql接続
+mysql -u root -p
+パスワード入力(password)
+// タイムゾーン確認
+mysql> show variables like '%time_zone%';
+// データベース一覧表示
+mysql> show databases;
+// データベース選択
+use myapp_development
+// テーブル一覧表示
+mysql> show tables;
+// sql
+mysql> desc users;
+mysql> select * from users;
