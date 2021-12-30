@@ -33,6 +33,10 @@ $ rails g rspec:install
 実行
 $ rspec
 
+# herokuデプロイ
+$ git push heroku
+$ heroku run rails db:migrate
+
 # mysqlコンテナ操作
 $ docker-compose exec db bash
 // mysql接続
