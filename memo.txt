@@ -19,7 +19,7 @@ $ rails g controller クラス名 メソッド名
 # テスト実行
 $ rails test
 
-Rspec
+# Rspec
 インストール
 Gemfile
   group :development, :test do
@@ -29,7 +29,6 @@ Gemfile
   end
 $ bundle install
 $ rails g rspec:install
-
 
 実行
 $ rspec
