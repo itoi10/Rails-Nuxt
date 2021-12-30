@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # emailを小文字に変換
+  before_save { self.email = self.email.downcase }
+
   # name属性 空を許可しない, 長さを制限
   validates :name,  presence: true, length: { maximum: 50 }
 
