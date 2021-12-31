@@ -64,3 +64,8 @@ render :new, status: :unprocessable_entity # <= status を追加
 rails db:create
 rails db:migrate
 rails db:migrate:reset
+
+
+# Heroku MySQL設定方法
+Herokuへのデプロイ方法【Heroku+Rails+MySQL】
+https://qiita.com/murakami-mm/items/9587e21fc0ed57c803d0
