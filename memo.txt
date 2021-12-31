@@ -53,3 +53,14 @@ mysql> show tables;
 // sql
 mysql> desc users;
 mysql> select * from users;
+
+
+# validation error時にエラーが表示されない
+https://zenn.dev/satococoa/articles/95122320f1ca87
+
+render :new, status: :unprocessable_entity # <= status を追加
+
+# DB
+rails db:create
+rails db:migrate
+rails db:migrate:reset
