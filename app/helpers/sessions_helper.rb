@@ -10,4 +10,10 @@ module SessionsHelper
       @current_user ||= User.find_by(id: session[:user_id])
     end
   end
+
+  # ユーザーがログインしていればtrue、その他ならfalseを返す
+  # 「?」はrubyで慣用的に真偽値を返すタイプのメソッドを示すために使われる
+  def logged_in?
+    !current_user.nil?
+  end
 end

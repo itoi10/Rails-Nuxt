@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     # ユーザーをデータベースから見つけて検証する
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       # ユーザーログイン後にユーザー情報のページにリダイレクトする
       log_in user
       redirect_to user # user_url(user)
