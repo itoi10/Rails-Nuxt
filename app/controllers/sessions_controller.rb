@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
+
+  # ログインページ
   def new
   end
 
+  # ログイン
   def create
     # ユーザーをデータベースから見つけて検証する
     user = User.find_by(email: params[:session][:email].downcase)
@@ -16,6 +19,9 @@ class SessionsController < ApplicationController
     end
   end
 
+  # ログアウト (セッション破棄)
   def destroy
+    log_out
+    redirect_to root_url
   end
 end
