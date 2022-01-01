@@ -69,3 +69,13 @@ rails db:migrate:reset
 # Heroku MySQL設定方法
 Herokuへのデプロイ方法【Heroku+Rails+MySQL】
 https://qiita.com/murakami-mm/items/9587e21fc0ed57c803d0
+
+
+
+# Ruby On Rails 7 - Delete method not working
+https://stackoverflow.com/questions/70446101/ruby-on-rails-7-delete-method-not-working
+
+before
+<%= link_to "ログアウト", logout_path, method: :delete %>
+after
+<%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete } %>

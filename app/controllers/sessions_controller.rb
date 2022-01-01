@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:session][:password])
       # ユーザーログイン後にユーザー情報のページにリダイレクトする
       log_in user
+      remember user # ユーザーのセッションを永続的にする
       redirect_to user # user_url(user)
     else
       # flashをflash.nowに置き換えると、レンダリングが終わっているページでフラッシュメッセージを表示することができる
