@@ -34,8 +34,14 @@ $ rails g rspec:install
 $ rspec
 
 # herokuデプロイ
+メンテナンスモード オン
+$ heroku maintenance:on
+デプロイ
 $ git push heroku
+マイグレート
 $ heroku run rails db:migrate
+メンテナンスモード オフ
+$ heroku maintenance:off
 
 # mysqlコンテナ操作
 $ docker-compose exec db bash
