@@ -9,8 +9,11 @@ class SessionsController < ApplicationController
     # ユーザーをデータベースから見つけて検証する
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
-      # ユーザーログイン後にユーザー情報のページにリダイレクトする
+      # ユーザーログイン
       log_in user
+      # チェックボックス オンならユーザーのセッションを永続的にする
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      # ユーザーログイン後にユーザー情報のページにリダイレクトする
       redirect_to user # user_url(user)
     else
       # flashをflash.nowに置き換えると、レンダリングが終わっているページでフラッシュメッセージを表示することができる
@@ -21,7 +24,8 @@ class SessionsController < ApplicationController
 
   # ログアウト (セッション破棄)
   def destroy
-    log_out
+    # ログイン中の場合のみログアウトする
+    log_out if logged_in?
     redirect_to root_url
   end
 end
