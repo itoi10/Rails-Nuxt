@@ -22,7 +22,7 @@ RSpec.describe "UsersSignupTest", type: :feature do
       fill_in 'パスワード', with: 'testpassword'
       fill_in 'パスワード（確認）', with: 'testpassword'
       click_on 'アカウント作成'
-    }.to change(User, :count).to(1)
+    }.to change(User, :count).by(1)
 
     aggregate_failures do
       expect(current_path).to eq user_path(User.last)
