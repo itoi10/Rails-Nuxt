@@ -9,9 +9,11 @@ class SessionsController < ApplicationController
     # ユーザーをデータベースから見つけて検証する
     user = User.find_by(email: params[:session][:email].downcase)
     if user&.authenticate(params[:session][:password])
-      # ユーザーログイン後にユーザー情報のページにリダイレクトする
+      # ユーザーログイン
       log_in user
-      remember user # ユーザーのセッションを永続的にする
+      # チェックボックス オンならユーザーのセッションを永続的にする
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      # ユーザーログイン後にユーザー情報のページにリダイレクトする
       redirect_to user # user_url(user)
     else
       # flashをflash.nowに置き換えると、レンダリングが終わっているページでフラッシュメッセージを表示することができる
