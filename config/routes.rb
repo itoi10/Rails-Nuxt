@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   get '/signup',  to: 'users#new'
 
+  # セッション
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
   # GET     /users            | index
   # GET     /users/<:id>      | show
   # GET     /users/new        | new
