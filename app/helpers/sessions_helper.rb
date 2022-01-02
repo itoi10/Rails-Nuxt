@@ -26,6 +26,11 @@ module SessionsHelper
     end
   end
 
+  # 渡されたユーザーがカレントユーザーであればtrueを返す
+  def current_user?(user)
+    user && user == current_user
+  end
+
   # ユーザーがログインしていればtrue、その他ならfalseを返す
   # 「?」はrubyで慣用的に真偽値を返すタイプのメソッドを示すために使われる
   def logged_in?
