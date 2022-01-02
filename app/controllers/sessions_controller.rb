@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
       log_in user
       # チェックボックス オンならユーザーのセッションを永続的にする
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      # ユーザーログイン後にユーザー情報のページにリダイレクトする
-      redirect_to user # user_url(user)
+      # ユーザーログイン後に、ユーザーページまたはログイン前に閲覧しようとしたページにリダイレクト
+      redirect_back_or user
     else
       # flashをflash.nowに置き換えると、レンダリングが終わっているページでフラッシュメッセージを表示することができる
       flash.now[:danger] = 'メールアドレスまたはパスワードが間違っています'
