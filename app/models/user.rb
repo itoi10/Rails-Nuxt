@@ -16,7 +16,9 @@ class User < ApplicationRecord
   # セキュアパスワード
   has_secure_password
   # password属性 空を許可しない, 6文字以上
-  validates :password, presence: true, length: { minimum: 6 }
+  # nilを許容することでパスワード空でも編集できるようにする.
+  # has_secure_passwordにより新規ユーザー登録時は存在性を検証する
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
 
   # 永続セッションのためにユーザーをデータベースに記憶する
