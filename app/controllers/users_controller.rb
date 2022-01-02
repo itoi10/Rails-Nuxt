@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   # 特定のメソッドでログイン済みユーザーか検証を行う
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update]
   # 編集対象が正しいユーザーか検証
   before_action :correct_user,   only: [:edit, :update]
+
+  def index
+    # https://github.com/kaminari/kaminari
+    @users = User.page(params[:page])
+  end
 
   def show
     @user = User.find(params[:id])
