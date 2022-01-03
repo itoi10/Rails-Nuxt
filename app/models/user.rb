@@ -41,6 +41,10 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+
   # クラスメソッド
   # Rubyのクラスメソッドとインスタンスメソッドの例
   # https://qiita.com/tbpgr/items/56eb65c0ea5882abbb07
