@@ -6,35 +6,31 @@ Ruby 3.0.2
 
 Rails 7.0.0
 
-PostgreSQL
+PostgreSQL 14.1(local), 13.5(heroku)
 
 ## セットアップ
 
-$ docker-compose build
-
-$ docker-compose run web rails db:create
-
-$ docker-compose run web rails db:migrate
+$ make setup
 
 ### 起動
 
-$ docker-compose up -d
+$ make up
 
 rails コンテナ入り方
 
-$ docker-compose exec web bash
+$ make web
 
 postgres コンテナ入り方
 
-$ docker-compose exec postgres bash
+$ make pg
 
 ### 終了
 
-$ docker-compose down
+$ make down
 
 ## 環境
 
-### ローカル
+### local
 
 http://127.0.0.1:3000/
 
