@@ -6,7 +6,7 @@ Ruby 3.0.2
 
 Rails 7.0.0
 
-MySQL 8.0.27
+PostgreSQL
 
 ## セットアップ
 
@@ -24,9 +24,9 @@ rails コンテナ入り方
 
 $ docker-compose exec web bash
 
-mysql コンテナ入り方
+postgres コンテナ入り方
 
-$ docker-compose exec db bash
+$ docker-compose exec postgres bash
 
 ### 終了
 

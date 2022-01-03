@@ -74,6 +74,19 @@ mysql> desc users;
 mysql> select * from users;
 
 
+# postgresコンテナ操作
+$ docker-compose exec postgres bash
+// postgres接続
+psql -d myapp_development -U admin
+// データベース一覧表示
+postgres=# \l
+// テーブル一覧表示
+postgres=# \z
+// テーブル定義確認
+postgres=# \d tablename
+// sql
+postgres=# select * from users;
+
 # validation error時にエラーが表示されない
 https://zenn.dev/satococoa/articles/95122320f1ca87
 
@@ -98,3 +111,17 @@ before
 <%= link_to "ログアウト", logout_path, method: :delete %>
 after
 <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete } %>
+
+
+# main以外のブランチを一括削除
+$ git branch | grep -Ev "master|main" | xargs git branch -D
+
+
+# Heroku MySQlエラー
+Mysql2::Error: 'max_questions' resource (current value: 3600)
+
+【Rails6, heroku】MySQLにしてmigrateしたけど有料化が必要だった件
+https://qiita.com/pharma_tech3/items/505b36e9bd3fc45afe65
+
+ClearDBのクエリ数上限に達したのがエラーの原因
+herokuを無料で使う分にはPostgreSQLを使おうと思う
