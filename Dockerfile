@@ -3,4 +3,6 @@ ENV APP /myapp
 RUN mkdir -p $APP
 WORKDIR $APP
 COPY . $APP/
-RUN bundle install
+RUN apt-get update -qq && apt-get -y install \
+  imagemagick \
+  && bundle install
