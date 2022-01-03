@@ -1,0 +1,33 @@
+<%= form_with(model: @micropost, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "新しい投稿" %>
+  </div>
+  <%= f.submit "送信", class: "btn btn-primary" %>
+  <span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+  </span>
+<% end %>
+
+<script type="text/javascript">
+  // jQuery
+  // $("#micropost_image").bind("change", function() {
+  //   var size_in_megabytes = this.files[0].size/1024/1024;
+  //   if (size_in_megabytes > 5) {
+  //     alert("Maximum file size is 5MB. Please choose a smaller file.");
+  //     $("#micropost_image").val("");
+  //   }
+  // });
+
+  // バニラJS
+  const imageElem = document.getElementById('micropost_image');
+  imageElem.addEventListener('change', (e) => {
+    const size_in_megabytes = e.target.files[0].size/1024/1024;
+    console.log(e)
+    if (size_in_megabytes > 5) {
+      alert("ファイルサイズは5MBまでです。画像を再度選択してください。");
+      imageElem.value = ''
+    }
+  })
+
+</script>

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # dependent: :destroy ユーザー削除時に投稿も削除される
+  has_many :microposts, dependent: :destroy
+
   attr_accessor :remember_token
 
   # emailを小文字に変換
@@ -36,6 +39,10 @@ class User < ApplicationRecord
   # ユーザーのログイン情報を破棄する
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   # クラスメソッド
