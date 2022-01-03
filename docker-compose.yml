@@ -1,18 +1,32 @@
 version: '3'
 services:
-  db:
-    restart: always
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      TZ: Asia/Tokyo
+
+  # MySQL
+  # mysql:
+  #   restart: always
+  #   image: mysql:8.0
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     TZ: Asia/Tokyo
+  #   ports:
+  #     - '3306:3306'
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   volumes:
+  #     - ./tmp/mysql:/var/lib/mysql
+  #     - ./my.cnf:/etc/mysql/conf.d/my.cnf
+  #   tty: true
+
+  # PostgreSQL
+  postgres:
+    image: postgres
     ports:
-      - '3306:3306'
-    command: --default-authentication-plugin=mysql_native_password
+      - "5432:5432"
     volumes:
-      - mysql-data:/var/lib/mysql
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf
-    tty: true
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'admin-pass'
+    restart: always
 
   web:
     restart: always
@@ -24,10 +38,6 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - db
+      - postgres
     stdin_open: true
     tty: true
-
-volumes:
-  mysql-data:
-    driver: local

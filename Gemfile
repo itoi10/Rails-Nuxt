@@ -13,7 +13,13 @@ gem 'active_storage_validations'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-gem "mysql2", "~> 0.5"
+
+# MySQL
+# gem "mysql2", "~> 0.5"
+
+# PostgreSQL
+gem 'pg', '1.2.3'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
