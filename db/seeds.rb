@@ -21,12 +21,19 @@ User.create!(name:  "Admin User",
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@example.com"
-  password = "password"
+  password = (0...24).map{ (65 + rand(26)).chr }.join # ランダム文字列
   User.create!(name:  name,
       email: email,
       password:              password,
       password_confirmation: password)
 end
+
+# ゲストユーザー
+guestUser = User.create!(name:  "ゲストユーザー",
+  email: "guest@example.com",
+  password:              "password",
+  password_confirmation: "password")
+
 
 ###
 # ポスト
@@ -49,3 +56,7 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+# ゲストユーザー
+following.each { |followed| guestUser.follow(followed) }
+followers.each { |follower| follower.follow(guestUser) }
