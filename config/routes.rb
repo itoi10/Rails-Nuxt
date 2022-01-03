@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  resources :microposts, only: [:create, :destroy]
+
   # GET     /users            | index
   # GET     /users/<:id>      | show
   # GET     /users/new        | new
