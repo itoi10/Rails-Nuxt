@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # dependent: :destroy ユーザー削除時に投稿も削除される
+  has_many :microposts, dependent: :destroy
+
   attr_accessor :remember_token
 
   # emailを小文字に変換
