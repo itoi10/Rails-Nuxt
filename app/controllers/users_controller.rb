@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # 特定のメソッドでログイン済みユーザーか検証を行う
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
+                                        :following, :followers]
   # 編集対象が正しいユーザーか検証
   before_action :correct_user,   only: [:edit, :update]
   # 管理者のみ削除可能
@@ -54,6 +55,20 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "ユーザーを削除しました"
     redirect_to users_url
+  end
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following.page(params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers.page(params[:page])
+    render 'show_follow'
   end
 
 
