@@ -37,8 +37,16 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
+  ### ↓↓↓ ファイル保存先 ↓↓↓ ###
+  # https://railsguides.jp/active_storage_overview.html
+
+  # ローカル
   config.active_storage.service = :local
+
+  # AWS
+  # config.active_storage.service = :amazon
+
+  ### ↑↑↑ 画像保存先 ↑↑↑ ###
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil

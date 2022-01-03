@@ -3,6 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.3"
 gem "rails", "~> 7.0.0"
+
+gem 'aws-sdk-s3',                 '1.46.0', require: false
+# ImageMagickをrailsで扱えるようにしてくれるGem
+# gem 'mini_magick'
+# MiniMagickで提供できない画像サイズを調整する機能
+# gem "image_processing", ">= 1.2"
+gem 'active_storage_validations'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 gem "mysql2", "~> 0.5"
@@ -37,10 +45,6 @@ gem "bootsnap", require: false
 gem 'faker', '2.19.0'
 
 gem 'kaminari'
-
-gem 'image_processing',           '1.9.3'
-gem 'mini_magick',                '4.9.5'
-gem 'active_storage_validations', '0.8.2'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
