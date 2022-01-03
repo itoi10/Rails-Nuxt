@@ -47,6 +47,15 @@ $ heroku run rails db:seed
 メンテナンスモード オフ
 $ heroku maintenance:off
 
+```
+heroku maintenance:on
+git push heroku
+heroku run rails db:migrate:reset RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+heroku run rails db:migrate
+heroku run rails db:seed
+heroku maintenance:off
+```
+
 # mysqlコンテナ操作
 $ docker-compose exec db bash
 // mysql接続
