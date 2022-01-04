@@ -1,0 +1,4 @@
+build:
+  config:
+    WORKDIR: app
+    API_URL: "https://rails-app-a.herokuapp.com/"

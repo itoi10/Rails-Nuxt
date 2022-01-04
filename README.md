@@ -8,6 +8,10 @@ Rails 7.0.0
 
 PostgreSQL 14.1(local), 13.5(heroku)
 
+Node 17.3.0
+
+Nuxt.js 2.15.8
+
 ## セットアップ
 
 $ make setup
@@ -16,13 +20,17 @@ $ make setup
 
 $ make up
 
-rails コンテナ入り方
+Rails コンテナ入り方
 
 $ make rails
 
-postgres コンテナ入り方
+PostgreSQL コンテナ入り方
 
 $ make pg
+
+Nuxt.js コンテナ入り方
+
+$ make nuxtjs
 
 ### 終了
 
@@ -30,10 +38,18 @@ $ make down
 
 ## 環境
 
-### local
+### Rails
+
+#### heroku
+
+https://rails-app-a.herokuapp.com/
+
+#### local
 
 http://127.0.0.1:3000/
 
-### heroku
+### Nuxt.js
 
-https://rails-app-a.herokuapp.com/
+#### local
+
+http://127.0.0.1:8080/

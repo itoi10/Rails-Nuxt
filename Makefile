@@ -15,8 +15,12 @@ restart:
 	docker-compose down
 	docker-compose up -d
 
+pg:
+	docker-compose exec postgres bash
+
 rails:
 	docker-compose exec rails bash
 
-pg:
-	docker-compose exec postgres bash
+nuxtjs:
+	docker-compose exec nuxt sh
+
