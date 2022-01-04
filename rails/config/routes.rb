@@ -23,8 +23,15 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-
   resources :microposts, only: [:create, :destroy]
-
   resources :relationships,       only: [:create, :destroy]
+
+
+  ######## API ########
+  namespace :api do
+    namespace :v1 do
+      resources :hello, only:[:index]
+    end
+  end
+
 end

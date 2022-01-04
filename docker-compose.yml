@@ -12,6 +12,7 @@ services:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
     restart: always
 
+  # Backend
   rails:
     restart: always
     build:
@@ -21,8 +22,9 @@ services:
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      API_DOMAIN: "localhost:$NUXT_PORT"
     volumes:
-      - ./rails/:/myapp
+      - "./rails:/$WORKDIR"
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
       - "$RAILS_PORT:3000"
@@ -31,12 +33,14 @@ services:
     stdin_open: true
     tty: true
 
+  # Frontend
   nuxt:
     restart: always
     build:
       context: ./nuxt
       args:
         WORKDIR: $WORKDIR
+        API_URL: "http://localhost:$RAILS_PORT"
     environment:
       NODE_OPTIONS: --openssl-legacy-provider
     command: yarn run dev

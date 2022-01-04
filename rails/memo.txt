@@ -125,3 +125,6 @@ https://qiita.com/pharma_tech3/items/505b36e9bd3fc45afe65
 
 ClearDBのクエリ数上限に達したのがエラーの原因
 herokuを無料で使う分にはPostgreSQLを使おうと思う
+
+# api hello
+rails g controller api::v1::hello
