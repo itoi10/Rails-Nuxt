@@ -49,6 +49,9 @@ gem 'faker', '2.19.0'
 
 gem 'kaminari'
 
+# CORS
+gem 'rack-cors'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
