@@ -10,6 +10,4 @@ WORKDIR ${HOME}
 
 COPY . ./
 
-RUN bundle install -j4
-
-CMD ["bundle", "exec", "rails", "server", "-p", "3000", "-b", "0.0.0.0"]
+RUN /bin/sh -c "bundle install -j4"

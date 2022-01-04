@@ -1,0 +1,23 @@
+# アプリ環境定義
+setup:
+  # 本番環境用DB
+  addons:
+    - plan: heroku-postgresql
+  # 環境変数
+  config:
+    RACK_ENV: production
+    RAILS_ENV: production
+    RAILS_LOG_TO_STDOUT: enabled
+    # 静的ファイル配信
+    RAILS_SERVE_STATIC_FILES: enabled
+
+# ビルド定義
+build:
+  docker:
+    web: Dockerfile
+  config:
+    WORKDIR: app
+
+# プロセス定義 puma起動
+run:
+  web: bundle exec puma -C config/puma.rb

@@ -33,4 +33,6 @@
 config/initializers/secret_token.rb
 
 .DS_Store
-.bash_history
+/.bash_history
+/.ash_history
+/.irb_history
