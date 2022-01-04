@@ -1,9 +1,9 @@
 setup:
 	docker-compose build
 	docker-compose up -d
-	docker-compose exec web rails db:create
-	docker-compose exec web rails db:migrate:reset
-	docker-compose exec web rails db:seed
+	docker-compose exec rails rails db:create
+	docker-compose exec rails rails db:migrate:reset
+	docker-compose exec rails rails db:seed
 
 up:
 	docker-compose up -d
@@ -15,8 +15,8 @@ restart:
 	docker-compose down
 	docker-compose up -d
 
-web:
-	docker-compose exec web bash
+rails:
+	docker-compose exec rails bash
 
 pg:
 	docker-compose exec postgres bash

@@ -1,6 +1,6 @@
 FROM ruby:3.0
 
-ARG WORKDIR="myapp"
+ARG WORKDIR
 
 ENV HOME=/${WORKDIR} \
   LANG=C.UTF-8 \

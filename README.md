@@ -18,7 +18,7 @@ $ make up
 
 rails コンテナ入り方
 
-$ make web
+$ make rails
 
 postgres コンテナ入り方
 
