@@ -134,3 +134,9 @@ heroku.ymlからDockerビルドが可能になった
 https://qiita.com/nkumag/items/7d026c73a89c9907065a
 
 heroku環境用のdocker-comopse.ymlのようなもの
+
+https://blog.cloud-acct.com/posts/u-setup-herokuyml-deploy/
+HerokuCLI-manifestのデプロイ解説編。
+
+# master.key 作成
+$ EDITOR="vi" rails credentials:edit

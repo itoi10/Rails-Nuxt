@@ -22,13 +22,9 @@ Rails 7.0.0
 
 PostgreSQL 14.1(local), 13.5(heroku)
 
-#### heroku
+#### [ heroku ] https://rails-app-api.herokuapp.com/
 
-https://rails-app-a.herokuapp.com/
-
-#### local
-
-http://127.0.0.1:3000/
+#### [ local ] http://127.0.0.1:3000/
 
 ### Nuxt.js
 
@@ -36,6 +32,4 @@ Node 17.3.0
 
 Nuxt.js 2.15.8
 
-#### local
-
-http://127.0.0.1:8080/
+#### [ local ] http://127.0.0.1:8080/
