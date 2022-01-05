@@ -138,5 +138,18 @@ heroku環境用のdocker-comopse.ymlのようなもの
 https://blog.cloud-acct.com/posts/u-setup-herokuyml-deploy/
 HerokuCLI-manifestのデプロイ解説編。
 
-# master.key 作成
+# rails master.key 作成
 $ EDITOR="vi" rails credentials:edit
+
+# heroku nuxt.js エラー
+Node.js（17.1.0）で“Error: error:0308010C:digital envelope routines::unsupported”が発生した時の対処方法
+https://aventures.io/posts/85
+
+Next.jsでError: error:0308010C:digital envelope routines::unsupportedを直す方法
+https://off.tokyo/blog/next-0308010cdigital-envelope/
+
+
+# heroku 環境変数
+$ heroku config
+$ heroku config:set KEY=VAL
+$ heroku config:unset KEY

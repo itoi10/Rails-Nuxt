@@ -32,4 +32,6 @@ Node 17.3.0
 
 Nuxt.js 2.15.8
 
+#### [ heroku ] https://nuxt-app-front.herokuapp.com/
+
 #### [ local ] http://127.0.0.1:8080/

@@ -1,4 +1,18 @@
+# 環境定義
+setup:
+  # 環境変数
+  config:
+    NODE_ENV: production
+    # NPM_CONFIG_PRODUCTION: false
+
+# ビルド定義
 build:
+  docker:
+    web: Dockerfile
   config:
     WORKDIR: app
-    API_URL: "https://rails-app-a.herokuapp.com/"
+    API_URL: "https://rails-app-api.herokuapp.com/"
+
+# プロセス定義
+run:
+  web: yarn run start

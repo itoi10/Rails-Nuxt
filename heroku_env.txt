@@ -1,0 +1,16 @@
+Heroku 環境変数
+
+# Rails
+
+API_DOMAIN:               nuxt-app-front.herokuapp.com
+DATABASE_URL:             <herokuで自動で設定された値>
+RACK_ENV:                 production
+RAILS_ENV:                production
+RAILS_LOG_TO_STDOUT:      enabled
+RAILS_MASTER_KEY:         <非公開>
+RAILS_SERVE_STATIC_FILES: enabled
+
+
+# Nuxt.js
+
+NODE_ENV: production

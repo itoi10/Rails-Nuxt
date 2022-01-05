@@ -90,3 +90,5 @@ sw.*
 *.swp
 
 .ash_history
+
+/.git
