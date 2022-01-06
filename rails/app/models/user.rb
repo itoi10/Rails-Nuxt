@@ -16,9 +16,6 @@ class User < ApplicationRecord
   # emailを小文字に変換
   before_save { self.email = self.email.downcase }
 
-  # name属性 空を許可しない, 長さを制限
-  validates :name,  presence: true, length: { maximum: 50 }
-
   # email属性 空を許可しない, 長さを制限, フォーマット検証, 一意
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -27,10 +24,25 @@ class User < ApplicationRecord
 
   # セキュアパスワード
   has_secure_password
-  # password属性 空を許可しない, 6文字以上
+
+
+  ###
+  # name属性 空を許可しない, 長さを制限, allow_black(空白の場合は長さチェックを行わないので二重にエラーが出なくて済む)
+  validates :name,  presence: true, length: { maximum: 30, allow_blank: true }
+
+  # password属性 空を許可しない, 8文字以上
   # nilを許容することでパスワード空でも編集できるようにする.
   # has_secure_passwordにより新規ユーザー登録時は存在性を検証する
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  # 入力可能文字制限
+  VALID_PASSWORD_REGEX = /\A[\w\-]+\z/
+  validates :password, presence: true,
+                      length: { minimum: 8 },
+                      format: {
+                        with: VALID_PASSWORD_REGEX
+                      },
+                      allow_nil: true
+
+  ###
 
 
   # 永続セッションのためにユーザーをデータベースに記憶する
