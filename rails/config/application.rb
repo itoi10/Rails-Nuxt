@@ -21,6 +21,11 @@ module Myapp
     # DB読み書きに使用するTZ. DBのTZ(UTC)で書き込まれ,RailsのTZ(JST)で読み込まれる
     config.active_record.default_timezone = :utc
 
+    # i18nロケールファイル
+    config.i18n.default_locale = :ja
+
+    # Zeiwerk有効時false推奨
+    config.add_autoload_paths_to_load_path = false
 
     # Rails による API 専用アプリケーション
     # https://railsguides.jp/api_app.html
