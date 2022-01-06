@@ -15,12 +15,15 @@ module Myapp
     # 認証トークンをremoteフォームに埋め込む
     config.action_view.embed_authenticity_token_in_remote_forms = true
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    # RailsアプリのTZ設定 TimeWithZone デフォルトはUTC (ENV["TZ"] = JST)
+    config.time_zone = ENV["TZ"]
+
+    # DB読み書きに使用するTZ. DBのTZ(UTC)で書き込まれ,RailsのTZ(JST)で読み込まれる
+    config.active_record.default_timezone = :utc
+
+
+    # Rails による API 専用アプリケーション
+    # https://railsguides.jp/api_app.html
+    # config.api_only = true
   end
 end

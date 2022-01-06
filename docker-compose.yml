@@ -2,7 +2,7 @@ version: '3'
 services:
 
   postgres:
-    image: postgres:14.1
+    image: postgres:14.1-alpine
     ports:
       - "5432:5432"
     volumes:
@@ -10,6 +10,8 @@ services:
     environment:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      TZ:   UTC # os
+      PGTZ: UTC # postgres
     restart: always
 
   # Backend
