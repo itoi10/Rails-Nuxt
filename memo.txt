@@ -153,3 +153,7 @@ https://off.tokyo/blog/next-0308010cdigital-envelope/
 $ heroku config
 $ heroku config:set KEY=VAL
 $ heroku config:unset KEY
+
+# debugger
+Rails アプリケーションのデバッグ
+https://railsguides.jp/debugging_rails_applications.html

@@ -1,3 +1,6 @@
+
+require "validator/email_validator"
+
 class User < ApplicationRecord
   # dependent: :destroy ユーザー削除時に投稿も削除される
   has_many :microposts, dependent: :destroy
@@ -13,16 +16,13 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token
 
-  # emailを小文字に変換
-  before_save { self.email = self.email.downcase }
+  # 検証前にemailを小文字に変換
+  before_validation { self.email = self.email.downcase }
 
-  # email属性 空を許可しない, 長さを制限, フォーマット検証, 一意
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
 
-  # セキュアパスワード
+
+  # セキュアパスワード gem bcrypt
+  # https://naokirin.hatenablog.com/entry/2019/03/29/032801
   has_secure_password
 
 
@@ -42,6 +42,10 @@ class User < ApplicationRecord
                         message: :invalid_password # エラーメッセージ
                       },
                       allow_nil: true
+
+  # email
+  validates :email, presence: true,
+            email: { allow_blank: true } # カスタムバリデーション
 
   ###
 
