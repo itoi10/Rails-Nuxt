@@ -90,19 +90,34 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  # 同じemailでactivate済みユーザーがいたらtrueを返す
+  def email_activated?
+    users = User.where.not(id: id)
+    users.find_activated(email).present?
+  end
+
+
   # クラスメソッド
   # Rubyのクラスメソッドとインスタンスメソッドの例
   # https://qiita.com/tbpgr/items/56eb65c0ea5882abbb07
+  class << self
 
-  # 渡された文字列のハッシュ値を返す
-  def self.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
-  end
+    # 渡された文字列のハッシュ値を返す
+    def digest(string)
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
+    end
 
-  # ランダムなトークンを返す
-  def self.new_token
-    SecureRandom.urlsafe_base64
+    # ランダムなトークンを返す
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
+
+    # activate済み
+    def find_activated(email)
+      find_by(email: email, activated: true)
+    end
+
   end
 
 end
