@@ -93,7 +93,7 @@ class User < ApplicationRecord
   # 同じemailでactivate済みユーザーがいたらtrueを返す
   def email_activated?
     users = User.where.not(id: id)
-    users.find_activated(email).present?
+    users.find_by_activated(email).present?
   end
 
 
@@ -113,8 +113,8 @@ class User < ApplicationRecord
       SecureRandom.urlsafe_base64
     end
 
-    # activate済み
-    def find_activated(email)
+    # emailでactivate済みユーザーを探す, いないならnil
+    def find_by_activated(email)
       find_by(email: email, activated: true)
     end
 

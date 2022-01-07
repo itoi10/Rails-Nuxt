@@ -7,7 +7,7 @@ class EmailValidator < ActiveModel::EachValidator
     record.errors.add(attribute, :too_long, count: max) if value.length > max
 
     # 書式
-    format = /\A\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*\z/
+    format = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
     record.errors.add(attribute, :invalid) unless format =~ value
 
     # 重複排除
