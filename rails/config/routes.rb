@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   ######## API ########
   namespace :api do
     namespace :v1 do
-      resources :hello, only:[:index]
+      resources :users, only:[:index]
     end
   end
 

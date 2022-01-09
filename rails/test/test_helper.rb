@@ -5,11 +5,19 @@ require "minitest/reporters"
 Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
+  # seeds.rb
+  # parallelize_setup do |worker|
+  #   load "#{Rails.root}/db/seeds.rb"
+  # end
+
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
 
+  # fixtures
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
+
+
   include ApplicationHelper
 
   # Add more helper methods to be used by all tests here...
@@ -22,6 +30,11 @@ class ActiveSupport::TestCase
   # テストユーザーとしてログインする
   def log_in_as(user)
     session[:user_id] = user.id
+  end
+
+  # アクティブなユーザーを一人取り出す
+  def active_user
+    User.find_by(activated: true)
   end
 
 end

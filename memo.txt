@@ -77,7 +77,7 @@ mysql> select * from users;
 # postgresコンテナ操作
 $ docker-compose exec postgres bash
 // postgres接続
-psql -d myapp_development -U admin
+psql -d myapp_development -U postgres
 // データベース一覧表示
 postgres=# \l
 // テーブル一覧表示
@@ -153,3 +153,7 @@ https://off.tokyo/blog/next-0308010cdigital-envelope/
 $ heroku config
 $ heroku config:set KEY=VAL
 $ heroku config:unset KEY
+
+# debugger
+Rails アプリケーションのデバッグ
+https://railsguides.jp/debugging_rails_applications.html
