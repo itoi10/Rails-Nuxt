@@ -1,6 +1,35 @@
 <template>
   <v-app>
-    <wel-app-bar />
+    <welcome-app-bar />
+
+    <v-img
+      dark
+      src="../assets/images/back.png"
+      gradient="to top right, rgba(19,84,122,.6), rgba(128,208,199,.9)"
+      :height="imgHeight"
+    >
+      <v-row
+        align="center"
+        justify="center"
+        :style="{ height: `${imgHeight}px` }"
+      >
+        <v-col
+          cols="12"
+          class="text-center"
+        >
+          <h1 class="display-1 mb-4">
+            Nuxt App Demo
+          </h1>
+          <h4
+            class="subheading"
+            :style="{ letterSpacing: '5px' }"
+          >
+
+          </h4>
+        </v-col>
+      </v-row>
+    </v-img>
+
     <v-sheet>
       <v-container
         fluid
@@ -16,6 +45,7 @@
         </v-row>
       </v-container>
     </v-sheet>
+    <before-login-footer />
   </v-app>
 </template>
 
@@ -36,12 +66,13 @@ export default {
   },
   data () {
     return {
+      imgHeight: 500,
       menus: [
         { title: 'about', subtitle: 'About' },
-        { title: 'products', subtitle: '他にはない優れた機能の数々' },
-        { title: 'price', subtitle: '会社の成長に合わせた3つのプラン' },
-        { title: 'contact', subtitle: 'お気軽にご連絡を' },
-        { title: 'company', subtitle: '私たちの会社' }
+        { title: 'products', subtitle: 'Products' },
+        { title: 'price', subtitle: 'Price' },
+        { title: 'contact', subtitle: 'Contact' },
+        { title: 'company', subtitle: 'Company' }
       ]
     }
   }
