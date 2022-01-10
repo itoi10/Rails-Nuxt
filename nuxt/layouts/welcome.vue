@@ -2,9 +2,11 @@
   <v-app>
     <welcome-app-bar
       :menus="menus"
+      :img-height="imgHeight"
     />
 
     <v-img
+      id="scroll-top"
       dark
       src="../assets/images/back.png"
       gradient="to top right, rgba(19,84,122,.6), rgba(128,208,199,.9)"
@@ -42,6 +44,7 @@
           :key="`menu-${i}`"
         >
           <v-col
+            :id="menu.title"
             cols="12"
           >
             <v-card flat>

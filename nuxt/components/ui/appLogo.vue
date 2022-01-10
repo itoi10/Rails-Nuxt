@@ -5,7 +5,7 @@
     class="my-app-log"
   >
     <span class="white--text text-subtitle-2">
-      Biz
+      App
     </span>
   </v-avatar>
 </template>

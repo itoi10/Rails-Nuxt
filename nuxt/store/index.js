@@ -1,5 +1,11 @@
 export const state = () => ({
-  isLoggedIn: false
+  isLoggedIn: false,
+
+  styles: {
+    beforeLogin: {
+      appBarHeight: 56
+    }
+  }
 })
 
 export const getters = {}
