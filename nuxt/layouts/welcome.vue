@@ -1,6 +1,8 @@
 <template>
   <v-app>
-    <welcome-app-bar />
+    <welcome-app-bar
+      :menus="menus"
+    />
 
     <v-img
       dark
