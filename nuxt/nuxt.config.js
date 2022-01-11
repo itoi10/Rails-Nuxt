@@ -69,7 +69,8 @@ export default {
           success: '44D69E',
           warning: 'FEB65E',
           error: 'FB8678',
-          background: 'f6f6f4'
+          background: 'f6f6f4',
+          myblue: '1867C0'
         }
       }
     }
@@ -78,7 +79,6 @@ export default {
   i18n: {
     locales: ['ja', 'en'],
     defaultLocale: 'ja',
-    // Doc: https://kazupon.github.io/vue-i18n/api/#properties
     vueI18n: {
       fallbackLocale: 'ja',
       // silentTranslationWarn: true,
@@ -88,6 +88,11 @@ export default {
         en: require('./locales/en.json')
       }
     }
+  },
+
+  // 環境変数 読込
+  publicRuntimeConfig: {
+    appName: process.env.APP_NAME
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

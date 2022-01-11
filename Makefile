@@ -24,3 +24,11 @@ rb:
 nx:
 	docker-compose exec nuxt sh
 
+rerb:
+	docker-compose rm -fsv rails
+	docker-compose up -d rails
+
+renx:
+	docker-compose rm -fsv nuxt
+	docker-compose up -d nuxt
+	docker-compose logs -f
