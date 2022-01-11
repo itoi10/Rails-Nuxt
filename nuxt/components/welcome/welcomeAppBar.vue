@@ -25,15 +25,23 @@
         {{ $t(`menus.${menu.title}`) }}
       </v-btn>
     </v-toolbar-items>
+
+    <signup-link />
+    <login-link />
+
   </v-app-bar>
 </template>
 
 <script>
 import appLogo from '~/components/ui/appLogo'
+import loginLink from '~/components/beforeLogin/loginLink.vue'
+import signupLink from '~/components/beforeLogin/signupLink.vue'
 
 export default {
   components: {
     appLogo,
+    loginLink,
+    signupLink
   },
   props: {
     menus: {
