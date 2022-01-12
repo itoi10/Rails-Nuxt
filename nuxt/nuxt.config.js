@@ -95,6 +95,13 @@ export default {
     appName: process.env.APP_NAME
   },
 
+  // hot reload
+  watchers: {
+    webpack: {
+      poll: true
+    }
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
