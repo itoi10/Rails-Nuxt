@@ -4,6 +4,7 @@
       #form-card-content
     >
       <v-form
+        ref="form"
         v-model="isValid"
       >
         <user-form-name
@@ -16,10 +17,12 @@
           :password.sync="params.user.password"
         />
         <v-btn
-          :disabled="!isValid"
+          :disabled="!isValid || loading"
+          :loading="loading"
           block
           color="myblue"
           class="white--text"
+          @click="signup"
         >
           登録する
         </v-btn>
@@ -36,6 +39,7 @@ export default {
   layout: 'beforeLogin',
   data () {
     return {
+      loading: false,
       // フォームバリデーションOK?
       isValid: false,
       // RailsAPI送信用オブジェクト
@@ -46,6 +50,22 @@ export default {
           password: ''
         }
       }
+    }
+  },
+  methods: {
+    signup () {
+      // 仮アクション, RailsAPI呼び出し未実装
+      this.loading = true
+      setTimeout(() => {
+        this.formReset()
+        this.loading = false
+      }, 1500)
+    },
+    formReset () {
+      // v-form[ref="form"]の入力を削除
+      this.$refs.form.reset()
+      // dataリセット
+      this.params = { user: { name: '', email: '', password: '' } }
     }
   }
 }
