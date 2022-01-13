@@ -77,6 +77,9 @@ export default {
   },
 
   i18n: {
+    //  全ての言語にプレフィックスを追加しない
+    strategy: 'no_prefix',
+
     locales: ['ja', 'en'],
     defaultLocale: 'ja',
     vueI18n: {
