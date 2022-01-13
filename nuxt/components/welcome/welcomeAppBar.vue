@@ -9,11 +9,10 @@
     <app-logo
       @click.native="goTo('scroll-top')"
     />
-    <v-toolbar-title
+
+    <app-title
       class="hidden-mobile-and-down"
-    >
-      {{ appName }}
-    </v-toolbar-title>
+    />
 
     <v-spacer />
 
@@ -37,7 +36,7 @@
       nudge-left="110"
       nudge-width="100"
     >
-      <template v-slot:activator="{ on }">
+      <template #activator="{ on }">
         <v-app-bar-nav-icon
           class="hidden-ipad-and-up"
           v-on="on"
@@ -59,18 +58,19 @@
         </v-list-item>
       </v-list>
     </v-menu>
-
   </v-app-bar>
 </template>
 
 <script>
 import appLogo from '~/components/ui/appLogo'
+import appTitle from '~/components/ui/appTitle.vue'
 import loginLink from '~/components/beforeLogin/loginLink.vue'
 import signupLink from '~/components/beforeLogin/signupLink.vue'
 
 export default {
   components: {
     appLogo,
+    appTitle,
     loginLink,
     signupLink
   },
@@ -84,9 +84,8 @@ export default {
       default: 0
     }
   },
-  data ({ $config: { appName }, $store }) {
+  data ({ $store }) {
     return {
-      appName,
       scrollY: 0,
       appBarHeight: $store.state.styles.beforeLogin.appBarHeight
     }

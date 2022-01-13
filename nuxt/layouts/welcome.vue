@@ -27,9 +27,7 @@
           <h4
             class="subheading"
             :style="{ letterSpacing: '5px' }"
-          >
-
-          </h4>
+          />
         </v-col>
       </v-row>
     </v-img>

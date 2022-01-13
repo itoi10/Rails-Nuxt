@@ -46,7 +46,7 @@ export default {
     '@nuxtjs/axios', // axios
 
     // https://www.npmjs.com/package/@nuxtjs/i18n
-    '@nuxtjs/i18n',
+    '@nuxtjs/i18n'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -77,6 +77,9 @@ export default {
   },
 
   i18n: {
+    //  全ての言語にプレフィックスを追加しない
+    strategy: 'no_prefix',
+
     locales: ['ja', 'en'],
     defaultLocale: 'ja',
     vueI18n: {
@@ -93,6 +96,13 @@ export default {
   // 環境変数 読込
   publicRuntimeConfig: {
     appName: process.env.APP_NAME
+  },
+
+  // hot reload
+  watchers: {
+    webpack: {
+      poll: true
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

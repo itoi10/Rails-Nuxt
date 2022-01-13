@@ -32,7 +32,8 @@ export default {
       const beginningYear = 2022
       const thisYear = new Date().getFullYear()
       return (beginningYear < thisYear)
-        ? `${beginningYear} - ${thisYear}` : beginningYear
+        ? `${beginningYear} - ${thisYear}`
+        : beginningYear
     }
   }
 }
