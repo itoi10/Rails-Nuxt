@@ -3,10 +3,20 @@
     <template
       #form-card-content
     >
-      <v-form>
+      <v-form
+        v-model="isValid"
+      >
         <user-form-name />
         <user-form-email />
         <user-form-password />
+        <v-btn
+          :disabled="!isValid"
+          block
+          color="myblue"
+          class="white--text"
+        >
+          登録する
+        </v-btn>
       </v-form>
     </template>
   </before-login-form-card>
@@ -14,6 +24,12 @@
 
 <script>
 export default {
-  layout: 'beforeLogin'
+  layout: 'beforeLogin',
+  data () {
+    return {
+      // フォームバリデーションOK?
+      isValid: false
+    }
+  }
 }
 </script>

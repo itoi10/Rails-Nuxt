@@ -36,7 +36,7 @@
       nudge-left="110"
       nudge-width="100"
     >
-      <template v-slot:activator="{ on }">
+      <template #activator="{ on }">
         <v-app-bar-nav-icon
           class="hidden-ipad-and-up"
           v-on="on"
@@ -58,7 +58,6 @@
         </v-list-item>
       </v-list>
     </v-menu>
-
   </v-app-bar>
 </template>
 

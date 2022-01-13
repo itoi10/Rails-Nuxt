@@ -46,7 +46,7 @@ export default {
     '@nuxtjs/axios', // axios
 
     // https://www.npmjs.com/package/@nuxtjs/i18n
-    '@nuxtjs/i18n',
+    '@nuxtjs/i18n'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
