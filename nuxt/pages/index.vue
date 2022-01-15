@@ -52,12 +52,75 @@
                     </div>
                   </v-btn>
                 </v-col>
+
+                <!-- 最近のプロジェクトカード -->
+                <v-col
+                  v-for="(project, i) in recentProjects.slice(0, 2)"
+                  :key="`card-project-${i}`"
+                  cols="12"
+                  :sm="card.sm"
+                  :md="card.md"
+                >
+                  <v-card
+                    block
+                    :height="card.height"
+                    :elevation="card.elevation"
+                    :to="$my.projectLinkTo(project.id)"
+                    class="v-btn text-capitalize"
+                  >
+                    <v-card-title class="pb-1 d-block text-truncate">
+                      {{ project.name }}
+                    </v-card-title>
+                    <v-card-text class="caption">
+                      <v-icon size="14">
+                        mdi-update
+                      </v-icon>
+                      {{ $my.format(project.updatedAt) }}
+                    </v-card-text>
+                  </v-card>
+                </v-col>
               </v-row>
             </v-col>
           </v-row>
         </v-container>
       </v-img>
     </v-parallax>
+
+    <!-- 全てのプロジェクト -->
+    <v-container>
+      <v-row justify="center">
+        <v-col
+          cols="12"
+          :sm="container.sm"
+          :md="container.md"
+        >
+          <v-card-title>
+            全てのプロジェクト
+          </v-card-title>
+
+          <v-divider class="mb-4" />
+
+          <v-data-table
+            :headers="tableHeaders"
+            :items="recentProjects"
+            item-key="id"
+            hide-default-footer
+          >
+            <template #[`item.name`]="{ item }">
+              <nuxt-link
+                :to="$my.projectLinkTo(item.id)"
+                class="text-decoration-none"
+              >
+                {{ item.name }}
+              </nuxt-link>
+            </template>
+            <template #[`item.updatedAt`]="{ item }">
+              {{ $my.format(item.updatedAt) }}
+            </template>
+          </v-data-table>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -80,7 +143,18 @@ export default {
         md: 4,
         height: 120,
         elevation: 4
-      }
+      },
+      tableHeaders: [
+        {
+          text: '名前',
+          value: 'name'
+        },
+        {
+          text: '更新日',
+          width: 150,
+          value: 'updatedAt'
+        }
+      ]
     }
   },
   computed: {
