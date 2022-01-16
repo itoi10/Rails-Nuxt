@@ -157,3 +157,27 @@ $ heroku config:unset KEY
 # debugger
 Rails アプリケーションのデバッグ
 https://railsguides.jp/debugging_rails_applications.html
+
+# rails jwt
+jwt発行
+rails c
+token = UserAuth::AuthToken.new.token
+token
+https://jwt.io/
+```
+HEADER:
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+PAYLOAD:
+{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "iat": 1516239022
+}
+```
+クレーム追加
+token = UserAuth::AuthToken.new(payload: {sub: 1}).token
+デコード
+UserAuth::AuthToken.new(token: token)
