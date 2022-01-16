@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+  # APIモードでもCookieを扱う
+  # include ActionController::Cookies
+
+  # JWTトークンを検証し正しければ発行主のユーザーを返すモジュール
+  include UserAuth::Authenticator
+
   include SessionsHelper
 
   private
