@@ -2,6 +2,9 @@
 require "validator/email_validator"
 
 class User < ApplicationRecord
+  # JWTトークンの発行と発行主の検索を行うモジュール
+  include UserAuth::Tokenizable
+
   # dependent: :destroy ユーザー削除時に投稿も削除される
   has_many :microposts, dependent: :destroy
   # リレーションシップ
