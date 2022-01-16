@@ -37,6 +37,16 @@ class ActiveSupport::TestCase
     User.find_by(activated: true)
   end
 
+
+  def api_url(path = "/")
+    "#{ENV["BASE_URL"]}/api/v1#{path}"
+  end
+
+  # コントローラーのJSONレスポンスを受け取る
+  def response_body
+    JSON.parse(@response.body)
+  end
+
 end
 
 

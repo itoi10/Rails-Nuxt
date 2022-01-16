@@ -100,6 +100,12 @@ class User < ApplicationRecord
   end
 
 
+  # 共通のJSONレスポンス
+  def my_json
+    as_json(only: [:id, :name, :email, :created_at])
+  end
+
+
   # クラスメソッド
   # Rubyのクラスメソッドとインスタンスメソッドの例
   # https://qiita.com/tbpgr/items/56eb65c0ea5882abbb07
