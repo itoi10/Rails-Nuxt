@@ -9,6 +9,7 @@ RAILS_ENV:                production
 RAILS_LOG_TO_STDOUT:      enabled
 RAILS_MASTER_KEY:         <非公開>
 RAILS_SERVE_STATIC_FILES: enabled
+APP_URL:                  https://rails-app-api.herokuapp.com/
 
 
 # Nuxt.js
