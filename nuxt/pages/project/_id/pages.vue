@@ -1,7 +1,7 @@
 <template>
   <logged-in-container>
     <template #my-content>
-      {{ $route.fullPath }}
+      {{ $store.state.current.project }}
     </template>
   </logged-in-container>
 </template>
