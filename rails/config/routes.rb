@@ -30,10 +30,18 @@ Rails.application.routes.draw do
   ######## API ########
   namespace :api do
     namespace :v1 do
+
+      # users
       resources :users, only:[] do
         # showアクションを/users/current_userで接続できるように変更
         get :current_user, action: :show, on: :collection
       end
+
+      # login, logout
+      resources :user_token, only: [:create] do
+        delete :destroy, on: :collection
+      end
+
     end
   end
 
