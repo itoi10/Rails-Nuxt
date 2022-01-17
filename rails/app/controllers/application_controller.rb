@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # JWTトークンを検証し正しければ発行主のユーザーを返すモジュール
   include UserAuth::Authenticator
 
-  include SessionsHelper
+  # include SessionsHelper
 
   private
 

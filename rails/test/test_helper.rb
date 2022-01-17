@@ -47,6 +47,11 @@ class ActiveSupport::TestCase
     JSON.parse(@response.body)
   end
 
+  # テスト用Cookie（Rack::Test::CookieJar Class）にトークンを保存する
+  def logged_in(user)
+    cookies[UserAuth.token_access_key] = user.to_token
+  end
+
 end
 
 
