@@ -22,7 +22,7 @@ $ make down
 
 ### Rails
 
-Ruby 3.0.2
+Ruby 2.7.5
 
 Rails 7.0.0
 
