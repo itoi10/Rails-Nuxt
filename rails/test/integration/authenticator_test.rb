@@ -71,17 +71,17 @@ class AuthenticatorTest < ActionDispatch::IntegrationTest
     end
 
 
-    # # headerトークンが優先されているか
-    # cookies[key] = @token
-    # other_user = User.where.not(id: @user.id).first
-    # header_token = other_user.to_token
-    # get api_url("/users/current_user"), headers: { Authorization: "Bearer #{header_token}" }
+    # headerトークンが優先されているか
+    cookies[key] = @token
+    other_user = User.where.not(id: @user.id).first
+    header_token = other_user.to_token
+    get api_url("/users/current_user"), headers: { Authorization: "Bearer #{header_token}" }
 
-    # # Authenticatorのトークンはheaderトークンか
-    # assert_equal(header_token, @controller.send(:token))
+    # Authenticatorのトークンはheaderトークンか
+    assert_equal(header_token, @controller.send(:token))
 
-    # # current_userはother_userか
-    # assert_equal(other_user, @controller.send(:current_user))
+    # current_userはother_userか
+    assert_equal(other_user, @controller.send(:current_user))
 
   end
 end
