@@ -13,4 +13,5 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
     assert_equal(@user.my_json, response_body)
   end
+
 end
