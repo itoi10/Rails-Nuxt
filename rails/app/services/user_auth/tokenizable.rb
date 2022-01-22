@@ -1,7 +1,6 @@
 # JWTトークンの発行と発行主の検索を行う
 module UserAuth
   module Tokenizable
-
     # UserクラスからTokenizableモジュールのメソッドを呼び出せるようにself.includedメソッド作成
     def self.included(base)
       base.extend ClassMethods
@@ -9,18 +8,17 @@ module UserAuth
 
     # クラスメソッド
     module ClassMethods
-
       def from_token(token)
         auth_token = AuthToken.new(token: token)
         from_token_payload(auth_token.payload)
       end
 
       private
-        # トークンをデコードしたpayloadのユーザーID（sub）からユーザーを検索し返す
-        def from_token_payload(payload)
-          find(payload["sub"])
-        end
 
+      # トークンをデコードしたpayloadのユーザーID（sub）からユーザーを検索し返す
+      def from_token_payload(payload)
+        find(payload['sub'])
+      end
     end
 
     # インスタンスメソッド
@@ -38,9 +36,9 @@ module UserAuth
     end
 
     private
-      def to_token_payload
-        { sub: id }
-      end
 
+    def to_token_payload
+      { sub: id }
+    end
   end
 end

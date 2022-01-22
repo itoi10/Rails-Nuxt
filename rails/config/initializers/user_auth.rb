@@ -7,17 +7,17 @@ module UserAuth
 
   # トークンを受け取る者の情報
   mattr_accessor :token_audience
-  self.token_audience = -> {
-    ENV["APP_URL"]
+  self.token_audience = lambda {
+    ENV['APP_URL']
   }
 
   #  署名アルゴリズム
   mattr_accessor :token_signature_algorithm
-  self.token_signature_algorithm = "HS256"
+  self.token_signature_algorithm = 'HS256'
 
   # 署名に使用する鍵. Railsのシークレットキーを使用
   mattr_accessor :token_secret_signature_key
-  self.token_secret_signature_key = -> {
+  self.token_secret_signature_key = lambda {
     Rails.application.credentials.secret_key_base
   }
 

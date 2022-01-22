@@ -1,10 +1,8 @@
 class Api::V1::UserTokenController < ApplicationController
-
   rescue_from UserAuth.not_found_exception_class, with: :not_found
 
   before_action :delete_cookie
   before_action :authenticate, only: [:create]
-
 
   # login
   def create
@@ -15,49 +13,45 @@ class Api::V1::UserTokenController < ApplicationController
     }
   end
 
-
   # logout
   def destroy
     head(:ok)
   end
 
-
   private
 
-    # メールアドレスからアクティブなユーザーを返す
-    def entity
-      @_entity ||= User.find_by_activated(auth_params[:email])
-    end
+  # メールアドレスからアクティブなユーザーを返す
+  def entity
+    @_entity ||= User.find_by_activated(auth_params[:email])
+  end
 
-    def auth_params
-      params.require(:auth).permit(:email, :password)
-    end
+  def auth_params
+    params.require(:auth).permit(:email, :password)
+  end
 
-    # トークンを発行する
-    def auth
-      @_auth ||= UserAuth::AuthToken.new(payload: { sub: entity.id })
-    end
+  # トークンを発行する
+  def auth
+    @_auth ||= UserAuth::AuthToken.new(payload: { sub: entity.id })
+  end
 
-    # クッキーに保存するトークン
-    def cookie_token
-      {
-        value: auth.token,
-        expires: Time.at(auth.payload[:exp]),
-        secure: Rails.env.production?,
-        http_only: true
-      }
-    end
+  # クッキーに保存するトークン
+  def cookie_token
+    {
+      value: auth.token,
+      expires: Time.at(auth.payload[:exp]),
+      secure: Rails.env.production?,
+      http_only: true
+    }
+  end
 
-    # entityが存在しない、entityのパスワードが一致しない場合に404エラーを返す
-    def authenticate
-      unless entity.present? && entity.authenticate(auth_params[:password])
-        raise UserAuth.not_found_exception_class
-      end
-    end
+  # entityが存在しない、entityのパスワードが一致しない場合に404エラーを返す
+  def authenticate
+    raise UserAuth.not_found_exception_class unless entity.present? && entity.authenticate(auth_params[:password])
+  end
 
-    # NotFoundエラー発生時にヘッダーレスポンスのみを返す
-    # status => Rack::Utils::SYMBOL_TO_STATUS_CODE
-    def not_found
-      head(:not_found)
-    end
+  # NotFoundエラー発生時にヘッダーレスポンスのみを返す
+  # status => Rack::Utils::SYMBOL_TO_STATUS_CODE
+  def not_found
+    head(:not_found)
+  end
 end

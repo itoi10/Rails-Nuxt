@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
-
   # ログインページ
-  def new
-  end
+  def new; end
 
   # ログイン
   def create

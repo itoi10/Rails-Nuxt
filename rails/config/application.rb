@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -16,7 +16,7 @@ module Myapp
     config.action_view.embed_authenticity_token_in_remote_forms = true
 
     # RailsアプリのTZ設定 TimeWithZone デフォルトはUTC (ENV["TZ"] = JST)
-    config.time_zone = ENV["TZ"]
+    config.time_zone = ENV['TZ']
 
     # DB読み書きに使用するTZ. DBのTZ(UTC)で書き込まれ,RailsのTZ(JST)で読み込まれる
     config.active_record.default_timezone = :utc
