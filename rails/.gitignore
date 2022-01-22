@@ -37,4 +37,5 @@ config/initializers/secret_token.rb
 /.irb_history
 /.rdbg_history
 
+
 /.git
