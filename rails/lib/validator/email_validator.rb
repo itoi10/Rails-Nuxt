@@ -12,6 +12,5 @@ class EmailValidator < ActiveModel::EachValidator
 
     # 重複排除
     record.errors.add(attribute, :taken) if record.email_activated?
-
   end
 end

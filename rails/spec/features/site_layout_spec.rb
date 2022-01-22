@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "SiteLayoutTest", type: :feature do
+RSpec.describe 'SiteLayoutTest', type: :feature do
   before { visit root_path }
   subject { page }
-  scenario "layout links" do
+  scenario 'layout links' do
     # リンク
     is_expected.to have_link nil, href: root_path, count: 2
     is_expected.to have_link nil, href: help_path
@@ -11,8 +11,8 @@ RSpec.describe "SiteLayoutTest", type: :feature do
     is_expected.to have_link nil, href: contact_path
     # タイトル
     visit contact_path
-    expect(page).to have_title full_title("Contact")
+    expect(page).to have_title full_title('Contact')
     visit signup_path
-    expect(page).to have_title full_title("Sign up")
+    expect(page).to have_title full_title('Sign up')
   end
 end

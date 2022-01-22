@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "UsersLogins", type: :feature do
+RSpec.describe 'UsersLogins', type: :feature do
   scenario 'login with valid email/invalid password' do
     visit login_path
     fill_in 'メールアドレス', with: 'valid@example.com'

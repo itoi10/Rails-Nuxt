@@ -1,5 +1,4 @@
-
-require "validator/email_validator"
+require 'validator/email_validator'
 
 class User < ApplicationRecord
   # JWTトークンの発行と発行主の検索を行うモジュール
@@ -8,30 +7,27 @@ class User < ApplicationRecord
   # dependent: :destroy ユーザー削除時に投稿も削除される
   has_many :microposts, dependent: :destroy
   # リレーションシップ
-  has_many :active_relationships, class_name:  "Relationship",
-                                  foreign_key: "follower_id",
-                                  dependent:   :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
-                                  foreign_key: "followed_id",
-                                  dependent:   :destroy
+  has_many :active_relationships, class_name: 'Relationship',
+                                  foreign_key: 'follower_id',
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship',
+                                   foreign_key: 'followed_id',
+                                   dependent: :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
   attr_accessor :remember_token
 
   # 検証前にemailを小文字に変換
-  before_validation { self.email = self.email.downcase }
-
-
+  before_validation { self.email = email.downcase }
 
   # セキュアパスワード gem bcrypt
   # https://naokirin.hatenablog.com/entry/2019/03/29/032801
   has_secure_password
 
-
   ###
   # name属性 空を許可しない, 長さを制限, allow_black(空白の場合は長さチェックを行わないので二重にエラーが出なくて済む)
-  validates :name,  presence: true, length: { maximum: 30, allow_blank: true }
+  validates :name, presence: true, length: { maximum: 30, allow_blank: true }
 
   # password属性 空を許可しない, 8文字以上
   # nilを許容することでパスワード空でも編集できるようにする.
@@ -39,19 +35,18 @@ class User < ApplicationRecord
   # 入力可能文字制限
   VALID_PASSWORD_REGEX = /\A[\w\-]+\z/
   validates :password, presence: true,
-                      length: { minimum: 8 },
-                      format: {
-                        with: VALID_PASSWORD_REGEX,
-                        message: :invalid_password # エラーメッセージ
-                      },
-                      allow_nil: true
+                       length: { minimum: 8 },
+                       format: {
+                         with: VALID_PASSWORD_REGEX,
+                         message: :invalid_password # エラーメッセージ
+                       },
+                       allow_nil: true
 
   # email
   validates :email, presence: true,
-            email: { allow_blank: true } # カスタムバリデーション
+                    email: { allow_blank: true } # カスタムバリデーション
 
   ###
-
 
   # 永続セッションのためにユーザーをデータベースに記憶する
   def remember
@@ -62,6 +57,7 @@ class User < ApplicationRecord
   # 渡されたトークンがダイジェストと一致したらtrueを返す
   def authenticated?(remember_token)
     return false if remember_digest.nil?
+
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
@@ -99,18 +95,15 @@ class User < ApplicationRecord
     users.find_by_activated(email).present?
   end
 
-
   # 共通のJSONレスポンス
   def my_json
-    as_json(only: [:id, :name, :email, :created_at])
+    as_json(only: %i[id name email created_at])
   end
-
 
   # クラスメソッド
   # Rubyのクラスメソッドとインスタンスメソッドの例
   # https://qiita.com/tbpgr/items/56eb65c0ea5882abbb07
   class << self
-
     # 渡された文字列のハッシュ値を返す
     def digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -126,7 +119,5 @@ class User < ApplicationRecord
     def find_by_activated(email)
       find_by(email: email, activated: true)
     end
-
   end
-
 end

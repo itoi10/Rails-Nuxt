@@ -7,6 +7,8 @@
 # Ignore bundler config.
 /.bundle
 
+/.cache
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -36,5 +38,6 @@ config/initializers/secret_token.rb
 /.ash_history
 /.irb_history
 /.rdbg_history
+
 
 /.git

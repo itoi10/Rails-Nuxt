@@ -2,10 +2,9 @@ require 'test_helper'
 
 # cookieテスト
 class Api::V1::UserTokenControllerTest < ActionDispatch::IntegrationTest
-
   def user_token_logged_in(user)
-    params = { auth: { email: user.email, password: "password" } }
-    post api_url("/user_token"), params: params
+    params = { auth: { email: user.email, password: 'password' } }
+    post api_url('/user_token'), params: params
     assert_response 200
   end
 
@@ -15,8 +14,7 @@ class Api::V1::UserTokenControllerTest < ActionDispatch::IntegrationTest
     user_token_logged_in(@user)
   end
 
-
-  test "create_action" do
+  test 'create_action' do
     # アクセストークンはCookieに保存されているか
     cookie_token = @request.cookie_jar[@key]
     assert cookie_token.present?
@@ -25,7 +23,7 @@ class Api::V1::UserTokenControllerTest < ActionDispatch::IntegrationTest
     cookie_options = @request.cookie_jar.instance_variable_get(:@set_cookies)[@key.to_s]
 
     # expiresは一致しているか
-    exp = UserAuth::AuthToken.new(token: cookie_token).payload["exp"]
+    exp = UserAuth::AuthToken.new(token: cookie_token).payload['exp']
     assert_equal(Time.at(exp), cookie_options[:expires])
 
     # secureは開発環境でfalseか
@@ -36,22 +34,19 @@ class Api::V1::UserTokenControllerTest < ActionDispatch::IntegrationTest
 
     ### レスポンスのテスト
     # レスポンス有効期限は一致しているか
-    assert_equal exp, response_body["exp"]
+    assert_equal exp, response_body['exp']
 
     # レスポンスユーザーは一致しているか
-    assert_equal @user.my_json, response_body["user"]
-
+    assert_equal @user.my_json, response_body['user']
   end
 
-
-  test "destroy_action" do
+  test 'destroy_action' do
     assert @request.cookie_jar[@key].present?
 
-    delete api_url("/user_token")
+    delete api_url('/user_token')
     assert_response 200
 
     # Cookieは削除されているか
     assert @request.cookie_jar[@key].nil?
   end
-
 end

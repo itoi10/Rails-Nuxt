@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe "UsersSignupTest", type: :feature do
+RSpec.describe 'UsersSignupTest', type: :feature do
   scenario 'invalid signup information' do
     visit signup_path
     fill_in 'ユーザーネーム', with: ' '
@@ -16,13 +16,13 @@ RSpec.describe "UsersSignupTest", type: :feature do
 
   scenario 'create new data when user submits valid information' do
     visit signup_path
-    expect {
+    expect do
       fill_in 'ユーザーネーム', with: 'テストユーザー'
       fill_in 'メールアドレス', with: 'test1@example.com'
       fill_in 'パスワード', with: 'testpassword'
       fill_in 'パスワード（確認）', with: 'testpassword'
       click_on 'アカウント作成'
-    }.to change(User, :count).by(1)
+    end.to change(User, :count).by(1)
 
     aggregate_failures do
       expect(current_path).to eq user_path(User.last)

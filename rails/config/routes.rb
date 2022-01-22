@@ -23,16 +23,14 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :microposts, only: [:create, :destroy]
-  resources :relationships,       only: [:create, :destroy]
-
+  resources :microposts, only: %i[create destroy]
+  resources :relationships, only: %i[create destroy]
 
   ######## API ########
   namespace :api do
     namespace :v1 do
-
       # users
-      resources :users, only:[] do
+      resources :users, only: [] do
         # showアクションを/users/current_userで接続できるように変更
         get :current_user, action: :show, on: :collection
       end
@@ -41,8 +39,6 @@ Rails.application.routes.draw do
       resources :user_token, only: [:create] do
         delete :destroy, on: :collection
       end
-
     end
   end
-
 end

@@ -5,29 +5,28 @@
 ###
 
 # メインのサンプルユーザーを1人作成する
-User.create!(name:  "Admin User",
-  email: "admin@example.com",
-  password:              "adminpassword",
-  password_confirmation: "adminpassword",
-  admin: true)
+User.create!(name: 'Admin User',
+             email: 'admin@example.com',
+             password: 'adminpassword',
+             password_confirmation: 'adminpassword',
+             admin: true)
 
 # 追加のユーザーをまとめて生成する
 99.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@example.com"
-  password = (0...24).map{ (65 + rand(26)).chr }.join # ランダム文字列
-  User.create!(name:  name,
-      email: email,
-      password:              password,
-      password_confirmation: password)
+  email = "example-#{n + 1}@example.com"
+  password = (0...24).map { rand(65..90).chr }.join # ランダム文字列
+  User.create!(name: name,
+               email: email,
+               password: password,
+               password_confirmation: password)
 end
 
 # ゲストユーザー
-guestUser = User.create!(name:  "ゲストユーザー",
-  email: "guest@example.com",
-  password:              "password",
-  password_confirmation: "password")
-
+guestUser = User.create!(name: 'ゲストユーザー',
+                         email: 'guest@example.com',
+                         password: 'password',
+                         password_confirmation: 'password')
 
 ###
 # ポスト

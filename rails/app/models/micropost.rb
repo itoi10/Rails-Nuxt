@@ -11,7 +11,6 @@ class Micropost < ApplicationRecord
 
   # 画像バリデーション
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
-    message: "対応形式はJPG,GIF,PNGです" },
-    size: { less_than: 5.megabytes, message: "サイズは5MBまでです" }
-
+                                      message: '対応形式はJPG,GIF,PNGです' },
+                      size: { less_than: 5.megabytes, message: 'サイズは5MBまでです' }
 end

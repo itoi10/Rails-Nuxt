@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   # 特定のメソッドでログイン済みユーザーか検証を行う
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
-                                        :following, :followers]
+  before_action :logged_in_user, only: %i[index edit update destroy
+                                          following followers]
   # 編集対象が正しいユーザーか検証
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :correct_user,   only: %i[edit update]
   # 管理者のみ削除可能
   before_action :admin_user,     only: :destroy
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if @user.save
       # ユーザー登録時にログインする
       log_in @user
-      flash[:success] = "ようこそ!サンプルアプリへ"
+      flash[:success] = 'ようこそ!サンプルアプリへ'
       # redirect_to user_url(@user) と等価
       redirect_to @user
     else
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "プロフィールを更新しました"
+      flash[:success] = 'プロフィールを更新しました'
       redirect_to @user
     else
       render 'edit', status: :unprocessable_entity
@@ -53,42 +53,41 @@ class UsersController < ApplicationController
   # ユーザー削除（管理者のみ）
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "ユーザーを削除しました"
+    flash[:success] = 'ユーザーを削除しました'
     redirect_to users_url
   end
 
   def following
-    @title = "Following"
+    @title = 'Following'
     @user  = User.find(params[:id])
     @users = @user.following.page(params[:page])
     render 'show_follow'
   end
 
   def followers
-    @title = "Followers"
+    @title = 'Followers'
     @user  = User.find(params[:id])
     @users = @user.followers.page(params[:page])
     render 'show_follow'
   end
 
-
   private
 
-    def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                  :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password,
+                                 :password_confirmation)
+  end
 
-    # beforeアクション
+  # beforeアクション
 
-    # 正しいユーザーかどうか確認
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
+  # 正しいユーザーかどうか確認
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
-    # 管理者かどうか確認
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+  # 管理者かどうか確認
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end
